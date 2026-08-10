@@ -1,0 +1,4 @@
+.env
+node_modules/
+data/raw_pokec.txt.gz
+results/*.json

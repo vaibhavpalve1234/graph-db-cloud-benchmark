@@ -1,0 +1,17 @@
+{
+  "name": "cognodb-benchmark",
+  "version": "1.0.0",
+  "description": "Benchmark suite comparing CognoDB Cloud against other managed graph database platforms",
+  "type": "commonjs",
+  "scripts": {
+    "prepare-dataset": "node data/prepare_dataset.js",
+    "build-report": "node scripts/build_report.js"
+  },
+  "dependencies": {
+    "arangojs": "^9.1.0",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "neo4j-driver": "^5.24.0",
+    "undici": "^8.10.0"
+  }
+}
