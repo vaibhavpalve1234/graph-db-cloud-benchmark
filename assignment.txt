@@ -1,0 +1,285 @@
+Graph Database Cloud Benchmarking
+
+Benchmark CognoDB Cloud against other managed graph database platforms and publish a
+
+reproducible, honest comparison.
+
+
+
+Deliverable: A public GitHub repository URL
+
+Deadline: 48 hours from receiving this assignment
+
+Submit to: [hr@wexa.ai](mailto\:hr@wexa.ai)
+
+
+
+1. About the Role and Why ?
+
+   Wexa AI is a deep-tech AI lab building infrastructure components necessary for running AI both on software and
+
+   on hardware. This role requires technology evangelism and passion behind disseminating an innovation done in
+
+   the laboratory. It will be an internal role with a public facing evangelism for community building. Our way of
+
+   measuring is how you can explain a deep technical subject and reach an audience. Please be creative in your
+
+   approachs.
+
+
+
+2. Objective
+
+   Design and run a benchmark suite that compares CognoDB.com with other managed graph database cloud
+
+   platforms on the same dataset and the same workloads. We are evaluating your engineering rigor: fair
+
+   methodology, reproducible automation, and clear, honest reporting — not whether any particular database
+
+   “wins”.
+
+3. Set up CognoDB Cloud
+
+
+
+4. Create an account. Go to [https://console.cognodb.com/signup](https://console.cognodb.com/signup) and sign up. The free tier requires no credit
+
+   card.
+
+
+
+5. Create a free instance. From the console, create a free (c0) instance and pick a region. It provisions in under a
+
+   minute. Each workspace gets one free instance.
+
+
+
+6. Save your connection details. You will get a connection URI of the form
+
+   bolt+s\://.databases.cognodb.cloud and a generated password for the user “cognodb”. The
+
+   password is shown exactly once — copy or download it immediately and store it where your code reads its
+
+   secrets.
+
+
+
+7. Connect with an official Neo4j driver. Install the official Neo4j driver for your language, point it at your
+
+   bolt+s\:// URI with username “cognodb” and your saved password, and run your first Cypher query. No other
+
+   code changes are needed.
+
+   Note on fairness — same resources everywhere
+
+   Run every database on the same resources: the same (or as close as the tiers allow) vCPU, RAM and storage allocation for
+
+   every platform, so no database gets a hardware advantage. The CognoDB free tier is intentionally small (burstable 0.5
+
+   vCPU, 256 MB RAM, 1 GB disk) — use the free or entry tier of every platform you compare, record each platform's
+
+   advertised specs in your README, and size your dataset so it fits the smallest tier. Comparing databases on unequal
+
+   resources (e.g. a free tier against a paid tier) is a methodology error.
+
+
+
+8. Databases to compare
+
+   Benchmark CognoDB Cloud against at least four other graph databases — which ones is entirely your choice.
+
+   Choosing credible, comparable databases is itself part of the evaluation. Every database must run under the
+
+   same resource limits (see the fairness note above): equivalent vCPU, RAM and storage for all of them, with each
+
+   one's specs documented in your README.
+
+   Free tiers, free trials or self-hosted deployments capped to the same resources are all fine.
+
+5. Benchmark requirements
+
+   5.1 Dataset
+
+   ● Use a public dataset with at least 100,000 relationships — for example a sample of the SNAP soc-Pokec social
+
+   network, a movie/actor graph, or a citation network. State the exact source and size (node count,
+
+   relationship count) in the README.
+
+   ● Load the identical dataset into every platform, and document the load method you used for each (driver
+
+   batching, bulk import tool, CSV import, etc.).
+
+   ● Keep the dataset small enough to fit every platform's free tier — roughly 100k–500k relationships is a good
+
+   range.
+
+   5.2 Required metrics
+
+   Measure every metric below on every platform. Run each query workload enough times to report stable
+
+   numbers (we suggest ≥ 100 iterations per read workload after warm-up), and report the percentiles — not just
+
+   averages.
+
+   Category Metric What to report
+
+   Data loading Ingest throughput Nodes/second and relationships/second, plus total wall-clock
+
+
+
+load time
+
+
+
+Traversals 1-hop, 2-hop and 3-hop query
+
+
+
+latency
+
+
+
+p50 and p95 latency (ms) for each hop depth, from a
+
+randomly chosen set of start nodes
+
+
+
+Lookups Point lookup and indexed/filtered
+
+
+
+lookup
+
+
+
+p50 and p95 latency (ms); state which properties are indexed
+
+on each platform
+
+
+
+Aggregations Count / group-by style query p50 and p95 latency (ms) for at least one aggregation over a
+
+
+
+label or relationship type
+
+
+
+Mixed workload Concurrent read/write throughput Sustained queries/second with a stated client concurrency
+
+(e.g. 10–40 concurrent clients) and read/write mix
+
+Footprint Resource usage where observable Whatever the platform exposes: stored data size, memory
+
+usage, instance specs. Say “not observable” where it is not.
+
+
+
+5.3 Methodology rules
+
+● Same resources for every database — equivalent vCPU, RAM and storage on every platform, documented in
+
+the README.
+
+● Same dataset, same logical queries, same client machine and region for every platform.
+
+● Warm up each database before measuring; report cold-start numbers separately if you include them.
+
+● Automate everything — a single script (or one per platform) should load the data, run the workloads and
+
+emit the results.
+
+● Record every caveat honestly: free-tier throttling, network variance, query-language differences, timeouts,
+
+failed runs. Honest caveats earn credit; hidden ones lose it.
+
+6. Deliverables
+
+   A GitHub repository containing:
+
+   ● Benchmark code — data loaders, workload runners and any harness/orchestration code.
+
+   ● Reproducible instructions — anyone with free-tier accounts should be able to re-run your benchmarks from
+
+   the README alone.
+
+   ● README with the full results matrix — every metric from section 5.2 for every platform tested, in clearly
+
+   formatted tables (charts are a plus), plus your methodology, environment/instance specs, dataset details and
+
+   caveats.
+
+   ● Analysis — a short written section explaining what the numbers show and, where you can, why the
+
+   platforms differ.
+
+   If you wish to keep the github repo private, please give us necessary access to access the repo.
+
+7. What a strong submission looks like
+
+   At minimum, cover CognoDB plus four other graph databases of your choice with every required metric
+
+   measured under the same resource limits, fully scripted runs and clear README tables. Beyond that, submissions
+
+   stand out through:
+
+   ● A well-argued selection of databases and a fair, well-documented resource setup.
+
+   ● Concurrency sweeps on the mixed workload (e.g. 1 / 10 / 40 clients).
+
+   ● Charts of the results and separation of warm vs. cold numbers.
+
+   ● Rigorous methodology: variance across repeated runs and a fairness analysis of free-tier limits.
+
+   ● Root-cause reasoning about why the platforms differ, and a harness others could extend.
+
+   ● A genuinely engaging, well-written post or article that makes the methodology and findings understandable
+
+   to a broad technical audience — and that earns real engagement (stars, reactions, views), not just
+
+   publication.
+
+8. Evaluation criteria
+
+   Criterion Weight What we look for
+
+   Methodology & fairness 25% Same data/queries everywhere, sensible warm-up, tier parity, honest
+
+
+
+caveats
+
+
+
+Completeness of metrics 20% All required metrics measured and reported for every platform
+
+Reproducibility & code quality 20% One-command runs, clean readable code, pinned dependencies
+
+README & analysis 15% Clear results matrix, well-structured writing, insight into the numbers
+
+communication 20% Quality and clarity of the report per section 1
+
+
+
+9. Submission
+
+   ● Make the GitHub repository.
+
+   ● Email both the repository URL to [hr@wexa.ai](mailto\:hr@wexa.ai) with the subject line “CognoDB Assignment 1 – ”.
+
+   ● Submit within 48 hours of receiving this assignment.
+
+● Do not include your CognoDB (or any platform) passwords or connection URIs in the repository — read them
+
+from environment variables.
+
+10\. Questions & support
+
+If you hit a problem with CognoDB Cloud itself (signup, provisioning, connectivity), email [cognodb@wexa.ai](mailto\:cognodb@wexa.ai). For
+
+questions about the assignment, reply to the email that delivered it. Use of AI coding assistants is fine — you
+
+must be able to explain and defend every part of your submission in the follow-up interview.
