@@ -1,0 +1,88 @@
+services:
+
+  # ============================================================
+  # MEMGRAPH
+  # ============================================================
+
+  memgraph:
+    image: memgraph/memgraph-mage:latest
+    container_name: memgraph
+    pull_policy: always
+    ports:
+      - "7687:7687"
+      - "7444:7444"
+    command:
+      - "--log-level=WARNING"
+    volumes:
+      - memgraph_data:/var/lib/memgraph
+    restart: unless-stopped
+
+  memgraph-lab:
+    image: memgraph/lab:latest
+    container_name: memgraph-lab
+    pull_policy: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - memgraph
+    environment:
+      - QUICK_CONNECT_MG_HOST=memgraph
+      - QUICK_CONNECT_MG_PORT=7687
+    restart: unless-stopped
+
+
+  # ============================================================
+  # ARANGODB
+  # ============================================================
+
+  arangodb:
+    image: arangodb:3.12
+    container_name: arangodb
+    ports:
+      - "8529:8529"
+    environment:
+      ARANGO_ROOT_PASSWORD: "cognodb"
+    volumes:
+      - arangodb_data:/var/lib/arangodb3
+      - arangodb_apps:/var/lib/arangodb3-apps
+    restart: unless-stopped
+
+
+  # ============================================================
+  # NEO4J
+  # ============================================================
+
+  neo4j:
+    image: neo4j:5
+    container_name: neo4j
+    ports:
+      - "7474:7474"
+      - "7688:7687"
+    environment:
+      NEO4J_AUTH: "neo4j/cognodb"
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+    restart: unless-stopped
+
+
+# ==============================================================
+# PERSISTENT VOLUMES
+# ==============================================================
+
+volumes:
+
+  memgraph_data:
+    name: cognodb_memgraph_data
+
+  arangodb_data:
+    name: cognodb_arangodb_data
+
+  arangodb_apps:
+    name: cognodb_arangodb_apps
+
+  neo4j_data:
+    name: cognodb_neo4j_data
+
+  neo4j_logs:
+    name: cognodb_neo4j_logs
