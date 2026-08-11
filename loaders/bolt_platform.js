@@ -1,14 +1,3 @@
-/**
- * Loader + benchmark runner for any Bolt-protocol graph database
- * (CognoDB Cloud, Neo4j AuraDB, Memgraph Cloud). Same code, same queries —
- * only the connection env vars differ, which is what we want for a fair
- * comparison since all three speak Cypher over Bolt.
- *
- * Usage:
- *   node loaders/bolt_platform.js --platform cognodb --mode schema
- *   node loaders/bolt_platform.js --platform cognodb --mode load
- *   node loaders/bolt_platform.js --platform cognodb --mode benchmark --concurrency 10
- */
 require("dotenv").config();
 const neo4j = require("neo4j-driver");
 const {
