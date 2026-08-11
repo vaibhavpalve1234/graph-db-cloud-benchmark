@@ -1,0 +1,42 @@
+{
+  "reads": {
+    "1hop": {
+      "p50_ms": 90.81,
+      "p95_ms": 134.25,
+      "iterations": 100
+    },
+    "2hop": {
+      "p50_ms": 88.24,
+      "p95_ms": 133.03,
+      "iterations": 100
+    },
+    "3hop": {
+      "p50_ms": 79.81,
+      "p95_ms": 124.79,
+      "iterations": 100
+    },
+    "point_lookup": {
+      "p50_ms": 90.57,
+      "p95_ms": 128.57,
+      "iterations": 100
+    },
+    "filtered_lookup": {
+      "p50_ms": 78.3,
+      "p95_ms": 120.1,
+      "iterations": 100
+    },
+    "aggregation": {
+      "p50_ms": 115.08,
+      "p95_ms": 136.29,
+      "iterations": 30
+    }
+  },
+  "mixed_workload": {
+    "concurrency": 10,
+    "duration_seconds": 30.1,
+    "reads": 2644,
+    "writes": 708,
+    "errors": 0,
+    "throughput_qps": 111.5
+  }
+}
