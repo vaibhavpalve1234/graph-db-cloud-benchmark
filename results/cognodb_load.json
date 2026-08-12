@@ -2,9 +2,9 @@
   "platform": "cognodb",
   "node_count": 33333,
   "relationship_count": 199977,
-  "node_load_seconds": 11.17,
-  "relationship_load_seconds": 54.58,
-  "total_load_seconds": 65.75,
-  "nodes_per_second": 2985.1,
-  "relationships_per_second": 3663.9
+  "node_load_seconds": 13.72,
+  "relationship_load_seconds": 58.55,
+  "total_load_seconds": 72.27,
+  "nodes_per_second": 2429.4,
+  "relationships_per_second": 3415.4
 }

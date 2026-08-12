@@ -1,42 +1,42 @@
 {
   "reads": {
     "1hop": {
-      "p50_ms": 232.62,
-      "p95_ms": 276.94,
+      "p50_ms": 268.86,
+      "p95_ms": 464.75,
       "iterations": 100
     },
     "2hop": {
-      "p50_ms": 233.72,
-      "p95_ms": 273.71,
+      "p50_ms": 240.84,
+      "p95_ms": 416.94,
       "iterations": 100
     },
     "3hop": {
-      "p50_ms": 234.03,
-      "p95_ms": 286.68,
+      "p50_ms": 260.03,
+      "p95_ms": 497.81,
       "iterations": 100
     },
     "point_lookup": {
-      "p50_ms": 235.79,
-      "p95_ms": 302.85,
+      "p50_ms": 271.07,
+      "p95_ms": 483.15,
       "iterations": 100
     },
     "filtered_lookup": {
-      "p50_ms": 240.36,
-      "p95_ms": 306.68,
+      "p50_ms": 250.83,
+      "p95_ms": 417.16,
       "iterations": 100
     },
     "aggregation": {
-      "p50_ms": 548.05,
-      "p95_ms": 604.56,
+      "p50_ms": 574.89,
+      "p95_ms": 829.76,
       "iterations": 30
     }
   },
   "mixed_workload": {
     "concurrency": 10,
     "duration_seconds": 30.2,
-    "reads": 845,
-    "writes": 212,
+    "reads": 954,
+    "writes": 225,
     "errors": 0,
-    "throughput_qps": 35
+    "throughput_qps": 39
   }
 }

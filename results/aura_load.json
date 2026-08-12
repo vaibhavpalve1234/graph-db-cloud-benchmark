@@ -2,9 +2,9 @@
   "platform": "aura",
   "node_count": 33333,
   "relationship_count": 199977,
-  "node_load_seconds": 4.91,
-  "relationship_load_seconds": 25.47,
-  "total_load_seconds": 30.38,
-  "nodes_per_second": 6788.7,
-  "relationships_per_second": 7851.3
+  "node_load_seconds": 7.96,
+  "relationship_load_seconds": 23.3,
+  "total_load_seconds": 31.26,
+  "nodes_per_second": 4186.2,
+  "relationships_per_second": 8584.3
 }
